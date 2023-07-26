@@ -19,7 +19,7 @@ authRouter.post("/api/signup", async (req, res) => {
         profilePic,
       });
       user = await user.save();
-      res.status(201).json({ success: "User inserted successfully" });
+      res.json({ success: "User inserted successfully" });
     }
   } catch (error) {
     console.log(error);
