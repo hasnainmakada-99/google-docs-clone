@@ -1,1 +1,46 @@
-{"installed":{"client_id":"906479667336-jslimafs3vp4a1bv64r686osdn2aq60v.apps.googleusercontent.com","project_id":"tokyo-house-388409","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs"}}
+{
+  "project_info": {
+    "project_number": "551531155223",
+    "project_id": "docs-project-sample",
+    "storage_bucket": "docs-project-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551531155223:android:234f76fad75492b6d97152",
+        "android_client_info": {
+          "package_name": "com.example.google_docs_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551531155223-c43iv78f8o2vfi4j2u7ekhr09dv5b7u9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM5j253-A7VwZtYYbAco2AKChdu8xB6G0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551531155223-c43iv78f8o2vfi4j2u7ekhr09dv5b7u9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "551531155223-4ha4od1l71jiq01mgjk9c2a5rempbutj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.googleDocsClone.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
