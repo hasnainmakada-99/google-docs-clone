@@ -12,14 +12,8 @@ const DB_CONNECT = `mongodb+srv://${username}:${password}@cluster0.a3fbatx.mongo
 const app = express();
 
 app.use(express.json());
-app.use((req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,PATCH,POST,DELETE");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-});
+app.use(cors());
+
 app.use(authRouter);
 
 mongoose
