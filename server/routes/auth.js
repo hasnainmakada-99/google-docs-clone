@@ -18,9 +18,6 @@ authRouter.post("/api/signup", async (req, res) => {
         profilePic,
       });
       user = await user.save();
-    } else if (user) {
-      res.status(201).json({ error: "user already exist" });
-      user = await user.save();
     }
 
     const token = jsonToken.sign({ id: user._id }, "passwordKey");
