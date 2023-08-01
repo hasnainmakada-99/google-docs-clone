@@ -5,6 +5,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:google_docs_clone/common/widgets/loader.dart";
 import "package:google_docs_clone/models/DocumentModel.dart";
+import "package:google_docs_clone/models/ErrorModel.dart";
 import "package:google_docs_clone/repository/AuthRepository.dart";
 import "package:google_docs_clone/repository/documentRepository.dart";
 import "package:google_docs_clone/utilities/colors.dart";
@@ -65,9 +66,9 @@ class HomeScreen extends ConsumerWidget {
         ],
       ),
       body: FutureBuilder(
-        future: ref
-            .watch(documentRepositoryProvider)
-            .getDocuments(ref.watch(userProvider)!.token),
+        future: ref.watch(documentRepositoryProvider).getDocuments(
+              ref.watch(userProvider)!.token,
+            ),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Loader();
@@ -86,10 +87,12 @@ class HomeScreen extends ConsumerWidget {
                     child: SizedBox(
                       height: 50,
                       child: Card(
-                        child: Text(
-                          document.title,
-                          style: const TextStyle(
-                            fontSize: 15,
+                        child: Center(
+                          child: Text(
+                            document.title,
+                            style: const TextStyle(
+                              fontSize: 17,
+                            ),
                           ),
                         ),
                       ),

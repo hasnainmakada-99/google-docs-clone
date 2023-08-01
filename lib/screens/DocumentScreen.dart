@@ -1,6 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' as quill;
+import 'package:google_docs_clone/models/DocumentModel.dart';
+import 'package:google_docs_clone/models/ErrorModel.dart';
+import 'package:google_docs_clone/repository/AuthRepository.dart';
+import 'package:google_docs_clone/repository/documentRepository.dart';
 import 'package:google_docs_clone/utilities/colors.dart';
 import 'package:routemaster/routemaster.dart';
 
@@ -20,6 +24,33 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
       TextEditingController(text: 'Untitled Document');
 
   final quill.QuillController _controller = quill.QuillController.basic();
+  ErrorModel? errorModel;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDocumentData();
+  }
+
+  void fetchDocumentData() async {
+    errorModel = await ref.read(documentRepositoryProvider).getDocumentsById(
+          ref.read(userProvider)!.token,
+          widget.id,
+        );
+
+    if (errorModel!.data != null) {
+      titleController.text = (errorModel!.data as DocumentModel).title;
+      setState(() {});
+    }
+  }
+
+  void updateTitle(WidgetRef ref, String title) {
+    ref.read(documentRepositoryProvider).updateTitle(
+          token: ref.read(userProvider)!.token,
+          id: widget.id,
+          title: title,
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,13 +102,14 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
                     ),
                     contentPadding: EdgeInsets.only(left: 10),
                   ),
-                  onSubmitted: (value) {},
+                  onSubmitted: (value) => updateTitle(ref, value),
                 ),
               )
             ],
           ),
         ),
         bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(
@@ -86,7 +118,6 @@ class _DocumentScreenState extends ConsumerState<DocumentScreen> {
               ),
             ),
           ),
-          preferredSize: const Size.fromHeight(1),
         ),
       ),
       body: Center(
