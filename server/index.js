@@ -35,7 +35,21 @@ io.on("connection", (socket) => {
   socket.on("join", (documentId) => {
     socket.join(documentId);
   });
+
+  socket.on("typing", (data) => {
+    socket.broadcast.to(data.room).emit("changes", data);
+  });
+
+  socket.on("save", (data) => {
+    saveData(data);
+  });
 });
+
+const saveData = async (data) => {
+  let document = await Document.findById(data.room);
+  document.content = data.delta;
+  document = await document.save();
+};
 
 app.listen(PORT, "0.0.0.0", (req, res) => {
   console.log(`Connected to http://localhost:${PORT}`);
