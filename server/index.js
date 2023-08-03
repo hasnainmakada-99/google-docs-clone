@@ -7,7 +7,7 @@ var http = require("http");
 const documentRouter = require("./routes/document");
 
 const PORT = process.env.PORT | 3001;
-const username = encodeURIComponent("hasnainmakada");
+const username = encodeURIComponent("hasnainmakada"); // remove this and put your credentials here, this will not work
 const password = encodeURIComponent("Hasnain@123");
 
 const DB_CONNECT = `mongodb+srv://${username}:${password}@cluster0.a3fbatx.mongodb.net/?retryWrites=true&w=majority`;

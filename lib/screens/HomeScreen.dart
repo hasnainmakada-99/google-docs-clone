@@ -1,11 +1,8 @@
-import "dart:html";
-import "dart:io";
-
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:google_docs_clone/common/widgets/loader.dart";
 import "package:google_docs_clone/models/DocumentModel.dart";
-import "package:google_docs_clone/models/ErrorModel.dart";
+
 import "package:google_docs_clone/repository/AuthRepository.dart";
 import "package:google_docs_clone/repository/documentRepository.dart";
 import "package:google_docs_clone/utilities/colors.dart";
